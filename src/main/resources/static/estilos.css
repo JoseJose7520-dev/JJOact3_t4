@@ -1,15 +1,38 @@
-body { font-family: system-ui, sans-serif; margin: 0; background: #f4f6f8; color: #1f2933; }
-header { background: #1e3a5f; color: #fff; padding: 16px 24px; }
-header h1 { margin: 0; font-size: 1.3rem; }
-header p { margin: 4px 0 0; opacity: .8; font-size: .9rem; }
-nav { background: #fff; padding: 10px 24px; border-bottom: 1px solid #dde3ea; }
-nav a { margin-right: 16px; color: #1e3a5f; font-weight: 600; text-decoration: none; }
+:root {
+  --verde: #1f6f43;
+  --verde-oscuro: #14532d;
+  --verde-claro: #e7f4ec;
+  --verde-borde: #cfe6d8;
+  --fondo: #f5f8f6;
+  --texto: #1d2b23;
+  --gris: #5f6f66;
+  --rojo: #b42318;
+}
+* { box-sizing: border-box; }
+body { font-family: system-ui, "Segoe UI", sans-serif; margin: 0; background: var(--fondo); color: var(--texto); }
+.encabezado { background: #fff; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 24px; border-bottom: 4px solid var(--verde); }
+.encabezado .titulo { flex: 1; text-align: center; }
+.encabezado h1 { margin: 0; font-size: 1.35rem; font-weight: 700; color: var(--verde-oscuro); }
+.encabezado p { margin: 4px 0 0; color: var(--gris); font-size: .9rem; }
+.logo-tecnm { height: 64px; width: auto; }
+.logo-ito { height: 64px; width: auto; }
+nav { background: var(--verde); padding: 0 24px; display: flex; flex-wrap: wrap; }
+nav a { padding: 12px 14px; color: #fff; font-weight: 600; text-decoration: none; border-bottom: 3px solid transparent; }
+nav a:hover { background: var(--verde-oscuro); border-bottom-color: #9fd8b4; }
+footer:empty { display: none; }
+@media (max-width: 640px) {
+  .encabezado { padding: 10px 16px; }
+  .logo-tecnm { height: 36px; }
+  .logo-ito { height: 44px; }
+  .encabezado h1 { font-size: 1.05rem; }
+}
 main { max-width: 980px; margin: 24px auto; padding: 0 16px; }
-.card { background: #fff; border: 1px solid #dde3ea; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
-.card h2 { margin-top: 0; }
+.card { background: #fff; border: 1px solid var(--verde-borde); border-radius: 10px; padding: 20px; margin-bottom: 20px; overflow-x: auto; }
+.card h2 { margin-top: 0; color: var(--verde-oscuro); }
 table { width: 100%; border-collapse: collapse; }
-th, td { text-align: left; padding: 10px; border-bottom: 1px solid #e4e9ef; vertical-align: middle; }
-th { background: #eef2f6; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid #e3ece6; vertical-align: middle; }
+th { background: var(--verde-claro); color: var(--verde-oscuro); font-size: .9rem; }
+tbody tr:hover { background: #f8fcf9; }
 .acciones { display: flex; gap: 6px; flex-wrap: wrap; }
 .acciones form { margin: 0; }
 form.filtro { display: flex; gap: 8px; margin-bottom: 16px; align-items: center; flex-wrap: wrap; }
@@ -17,11 +40,14 @@ form.filtro select { width: auto; }
 form.linea { display: flex; gap: 8px; flex-wrap: wrap; align-items: end; }
 form.linea div { flex: 1; min-width: 160px; }
 label { display: block; margin: 12px 0 4px; font-weight: 600; }
-input, select { padding: 8px; border: 1px solid #c4ccd6; border-radius: 6px; width: 100%; box-sizing: border-box; }
-button, .boton { background: #1e3a5f; color: #fff; border: 0; padding: 8px 14px; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; font-size: .9rem; }
-.boton.sec { background: #52606d; }
-.boton.peligro, button.peligro { background: #b42318; }
-.mensaje { background: #e3f5e9; color: #1d6b3a; padding: 10px; border-radius: 6px; margin-bottom: 12px; }
-.error { background: #fdeaea; color: #9b1c1c; padding: 10px; border-radius: 6px; margin-bottom: 12px; }
-.chip { background: #e8eef7; color: #1e3a5f; padding: 2px 8px; border-radius: 10px; font-size: .85rem; font-weight: 600; }
-footer { text-align: center; color: #7b8794; font-size: .85rem; margin: 24px 0; }
+input, select { padding: 9px; border: 1px solid #c3d6ca; border-radius: 6px; width: 100%; font: inherit; }
+input:focus, select:focus { outline: 2px solid var(--verde); outline-offset: 1px; border-color: var(--verde); }
+button, .boton { background: var(--verde); color: #fff; border: 0; padding: 8px 14px; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; font-size: .9rem; font-weight: 600; }
+button:hover, .boton:hover { background: var(--verde-oscuro); }
+.boton.sec { background: #fff; color: var(--verde-oscuro); border: 1px solid var(--verde-borde); }
+.boton.sec:hover { background: var(--verde-claro); }
+.boton.peligro, button.peligro { background: var(--rojo); }
+.boton.peligro:hover, button.peligro:hover { background: #8f1c13; }
+.mensaje { background: var(--verde-claro); color: var(--verde-oscuro); border: 1px solid var(--verde-borde); padding: 10px; border-radius: 6px; margin-bottom: 12px; }
+.error { background: #fdeaea; color: #9b1c1c; border: 1px solid #f5c6c6; padding: 10px; border-radius: 6px; margin-bottom: 12px; }
+.chip { background: var(--verde-claro); color: var(--verde-oscuro); padding: 2px 8px; border-radius: 10px; font-size: .8rem; font-weight: 700; }
