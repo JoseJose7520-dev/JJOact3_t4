@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="encabezado">
+    <h1>Act3 T4 · CRUD de Alumnos y Carreras</h1>
+    <p>Spring Boot + JPA + MySQL · Jose Jose Osvaldo</p>
+</header>
+<nav th:fragment="menu">
+    <a th:href="@{/alumnos}">Alumnos</a>
+    <a th:href="@{/alumnos/nuevo}">Nuevo alumno</a>
+    <a th:href="@{/carreras}">Carreras</a>
+    <a th:href="@{/api/alumnos}">API alumnos (JSON)</a>
+    <a th:href="@{/api/carreras}">API carreras (JSON)</a>
+</nav>
+<footer th:fragment="pie">TecNM Campus Oaxaca · Tema 4 Actividad 3</footer>
+</body>
+</html>

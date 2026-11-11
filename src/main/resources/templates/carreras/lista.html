@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carreras</title>
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/layout :: encabezado}"></header>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+<main>
+    <div class="mensaje" th:if="${mensaje}" th:text="${mensaje}"></div>
+    <div class="error" th:if="${error}" th:text="${error}"></div>
+    <div class="card">
+        <h2>Carreras</h2>
+        <table>
+            <thead><tr><th>ID</th><th>Clave</th><th>Nombre</th><th>Alumnos inscritos</th><th>Acciones</th></tr></thead>
+            <tbody>
+            <tr th:each="c : ${carreras}">
+                <td th:text="${c.id}"></td>
+                <td><span class="chip" th:text="${c.clave}"></span></td>
+                <td th:text="${c.nombre}"></td>
+                <td><a th:href="@{/alumnos(carreraId=${c.id})}" th:text="${c.totalAlumnos} + ' alumno(s)'"></a></td>
+                <td>
+                    <form th:action="@{/carreras/{id}/eliminar(id=${c.id})}" method="post"
+                          onsubmit="return confirm('¿Eliminar esta carrera?');">
+                        <button type="submit" class="peligro">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card">
+        <h2>Nueva carrera</h2>
+        <form class="linea" th:action="@{/carreras}" th:object="${carrera}" method="post">
+            <div><label for="clave">Clave</label><input id="clave" type="text" th:field="*{clave}" required maxlength="10"></div>
+            <div><label for="nombre">Nombre</label><input id="nombre" type="text" th:field="*{nombre}" required maxlength="100"></div>
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+</main>
+<footer th:replace="~{fragments/layout :: pie}"></footer>
+</body>
+</html>

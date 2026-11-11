@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alumnos</title>
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/layout :: encabezado}"></header>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+<main>
+    <div class="mensaje" th:if="${mensaje}" th:text="${mensaje}"></div>
+    <div class="card">
+        <h2>Alumnos</h2>
+        <form class="filtro" th:action="@{/alumnos}" method="get">
+            <span>Carrera:</span>
+            <select name="carreraId">
+                <option value="">Todas</option>
+                <option th:each="c : ${carreras}" th:value="${c.id}" th:text="${c.nombre}"
+                        th:selected="${c.id == carreraId}"></option>
+            </select>
+            <button type="submit">Filtrar</button>
+            <a class="boton" th:href="@{/alumnos/nuevo}">+ Nuevo alumno</a>
+        </form>
+        <table>
+            <thead>
+            <tr><th>ID</th><th>Matrícula</th><th>Nombre</th><th>Semestre</th><th>Carrera</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+            <tr th:each="a : ${alumnos}">
+                <td th:text="${a.id}"></td>
+                <td th:text="${a.matricula}"></td>
+                <td th:text="${a.nombre}"></td>
+                <td th:text="${a.semestre}"></td>
+                <!-- La relación: se muestra el NOMBRE de la carrera, no su id -->
+                <td><span class="chip" th:text="${a.carrera.clave}"></span> <span th:text="${a.carrera.nombre}"></span></td>
+                <td class="acciones">
+                    <a class="boton sec" th:href="@{/alumnos/{id}(id=${a.id})}">Ver</a>
+                    <a class="boton" th:href="@{/alumnos/{id}/editar(id=${a.id})}">Editar</a>
+                    <form th:action="@{/alumnos/{id}/eliminar(id=${a.id})}" method="post"
+                          onsubmit="return confirm('¿Eliminar este alumno?');">
+                        <button type="submit" class="peligro">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(alumnos)}">
+                <td colspan="6">No hay alumnos registrados.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer th:replace="~{fragments/layout :: pie}"></footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+meta {
+  name: 05 Eliminar alumno (DELETE)
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/api/alumnos/{{alumnoId}}
+  body: none
+  auth: none
+}

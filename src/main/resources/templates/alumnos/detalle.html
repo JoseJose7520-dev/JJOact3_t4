@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalle del alumno</title>
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body>
+<header th:replace="~{fragments/layout :: encabezado}"></header>
+<nav th:replace="~{fragments/layout :: menu}"></nav>
+<main>
+    <div class="card">
+        <h2 th:text="${alumno.nombre}">Alumno</h2>
+        <table>
+            <tr><th>ID</th><td th:text="${alumno.id}"></td></tr>
+            <tr><th>Matrícula</th><td th:text="${alumno.matricula}"></td></tr>
+            <tr><th>Correo</th><td th:text="${alumno.email}"></td></tr>
+            <tr><th>Semestre</th><td th:text="${alumno.semestre}"></td></tr>
+            <tr><th>Carrera</th><td th:text="${alumno.carrera.clave + ' - ' + alumno.carrera.nombre}"></td></tr>
+        </table>
+        <p class="acciones" style="margin-top:16px">
+            <a class="boton" th:href="@{/alumnos/{id}/editar(id=${alumno.id})}">Editar</a>
+            <a class="boton sec" th:href="@{/alumnos}">Volver</a>
+        </p>
+    </div>
+</main>
+<footer th:replace="~{fragments/layout :: pie}"></footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+body { font-family: system-ui, sans-serif; margin: 0; background: #f4f6f8; color: #1f2933; }
+header { background: #1e3a5f; color: #fff; padding: 16px 24px; }
+header h1 { margin: 0; font-size: 1.3rem; }
+header p { margin: 4px 0 0; opacity: .8; font-size: .9rem; }
+nav { background: #fff; padding: 10px 24px; border-bottom: 1px solid #dde3ea; }
+nav a { margin-right: 16px; color: #1e3a5f; font-weight: 600; text-decoration: none; }
+main { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+.card { background: #fff; border: 1px solid #dde3ea; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.card h2 { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid #e4e9ef; vertical-align: middle; }
+th { background: #eef2f6; }
+.acciones { display: flex; gap: 6px; flex-wrap: wrap; }
+.acciones form { margin: 0; }
+form.filtro { display: flex; gap: 8px; margin-bottom: 16px; align-items: center; flex-wrap: wrap; }
+form.filtro select { width: auto; }
+form.linea { display: flex; gap: 8px; flex-wrap: wrap; align-items: end; }
+form.linea div { flex: 1; min-width: 160px; }
+label { display: block; margin: 12px 0 4px; font-weight: 600; }
+input, select { padding: 8px; border: 1px solid #c4ccd6; border-radius: 6px; width: 100%; box-sizing: border-box; }
+button, .boton { background: #1e3a5f; color: #fff; border: 0; padding: 8px 14px; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; font-size: .9rem; }
+.boton.sec { background: #52606d; }
+.boton.peligro, button.peligro { background: #b42318; }
+.mensaje { background: #e3f5e9; color: #1d6b3a; padding: 10px; border-radius: 6px; margin-bottom: 12px; }
+.error { background: #fdeaea; color: #9b1c1c; padding: 10px; border-radius: 6px; margin-bottom: 12px; }
+.chip { background: #e8eef7; color: #1e3a5f; padding: 2px 8px; border-radius: 10px; font-size: .85rem; font-weight: 600; }
+footer { text-align: center; color: #7b8794; font-size: .85rem; margin: 24px 0; }

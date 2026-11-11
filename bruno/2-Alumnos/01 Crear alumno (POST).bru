@@ -1,0 +1,27 @@
+meta {
+  name: 01 Crear alumno (POST)
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/alumnos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "matricula": "21160001",
+    "nombre": "Jose Jose Osvaldo",
+    "email": "jose@ejemplo.com",
+    "semestre": 7,
+    "carreraId": 1
+  }
+}
+
+script:post-response {
+  if (res.status === 201) {
+    bru.setVar("alumnoId", res.body.id);
+  }
+}

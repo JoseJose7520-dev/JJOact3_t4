@@ -1,0 +1,21 @@
+meta {
+  name: 04 Actualizar alumno (PUT)
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api/alumnos/{{alumnoId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "matricula": "21160001",
+    "nombre": "Jose Jose Osvaldo",
+    "email": "jose.actualizado@ejemplo.com",
+    "semestre": 8,
+    "carreraId": 2
+  }
+}
